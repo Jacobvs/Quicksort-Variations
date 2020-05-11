@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class DataGenerator {
 
-
     public ArrayList<Double> generateNDoubles(int n){
         ArrayList<Double> arr = new ArrayList<>();
         for (int i = 0; i < n; i++)

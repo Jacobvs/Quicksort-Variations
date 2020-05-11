@@ -3,8 +3,9 @@ WPI Algorithms (CS 2223) Final Project - Analysis of different quicksort algorit
 
 # How to run the project:
 - Clone the project to your computer
-- TODO: Fill in
+- Run Main
 
+-----
 # Description
 This project creates numerous datasets and performs analysis of various quicksort algorithm implementations
 Algorithms (from Sedgewick book):
