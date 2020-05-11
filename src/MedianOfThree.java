@@ -1,5 +1,10 @@
 public class MedianOfThree extends QuickSort{
 
+    public static void sort(Comparable[] a) {
+        StdRandom.shuffle(a); // Eliminate dependence on input.
+        sort(a, 0, a.length - 1);
+    }
+
     private static void sort(Comparable[] a, int lo, int hi)
     {
         int middle = (lo + hi) / 2;

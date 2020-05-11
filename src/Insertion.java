@@ -1,10 +1,5 @@
 public class Insertion extends Sort{
 
-    public static void sort(Comparable[] a){
-        StdRandom.shuffle(a); // Eliminate dependence on input.
-        sort(a, 0, a.length - 1);
-    }
-
     static void sort(Comparable[] a, int lo, int hi)
     { // Sort a[] into increasing order.
         for (int i = lo; i < hi; i++)

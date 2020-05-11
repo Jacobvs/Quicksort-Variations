@@ -5,17 +5,16 @@ import java.util.Scanner;
 
 public class DataGenerator {
 
-    public ArrayList<Double> generateNDoubles(int n){
-        ArrayList<Double> arr = new ArrayList<>();
+    public static Double[] generateNDoubles(int n){
+        Double[] arr = new Double[n];
         for (int i = 0; i < n; i++)
-            arr.add(StdRandom.uniform());
-
+            arr[i] = StdRandom.uniform();
         return arr;
     }
 
-    public ArrayList<String> generateNStrings(int n) throws FileNotFoundException {
+    public static String[] generateNStrings(int n) throws FileNotFoundException {
         ArrayList<String> strings = new ArrayList<>();
-        ArrayList<String> res = new ArrayList<>();
+        String[] res = new String[n];
         Scanner sc = new Scanner(new File("words.english.txt"));
         while (sc.hasNext()) {
             String s = sc.next();
@@ -25,17 +24,17 @@ public class DataGenerator {
 
         for (int i = 0; i < n; i++) {
             int index = StdRandom.uniform(0, strings.size());
-            res.add(strings.remove(index));
+            res[i] = strings.remove(index);
         }
         return res;
     }
 
-    public ArrayList<Integer> generateNIntegers(int n){
-        ArrayList<Integer> ints = new ArrayList<>();
+    public static Integer[] generateNIntegers(int n){
+        Integer[] ints = new Integer[n*14];
 
         for (int i = 2; i < 17; i++)
             for (int j = 0; j < n; j++)
-                ints.add(StdRandom.uniform(n/i));
+                ints[n] = StdRandom.uniform(0, n/i);
 
         return ints;
     }

@@ -1,8 +1,13 @@
 public class CutoffInserstionSort extends QuickSort {
 
+    public static void sort(Comparable[] a) {
+        StdRandom.shuffle(a); // Eliminate dependence on input.
+        sort(a, 0, a.length - 1);
+    }
+
 
     private static void sort(Comparable[] a, int lo, int hi) {
-        if (hi <= lo + 10) {
+        if (hi <= lo + 12) {
             Insertion.sort(a, lo, hi);
             return;
         }
