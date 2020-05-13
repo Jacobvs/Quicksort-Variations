@@ -1,6 +1,7 @@
 public class CutoffInserstionSort extends QuickSort {
 
     public static void sort(Comparable[] a) {
+        resetCounts();
         StdRandom.shuffle(a); // Eliminate dependence on input.
         sort(a, 0, a.length - 1);
     }
@@ -13,8 +14,8 @@ public class CutoffInserstionSort extends QuickSort {
         }
 
         int j = partition(a, lo, hi); // Partition (see page 291).
-        sort(a, lo, j-1); // Sort left part a[lo .. j-1].
-        sort(a, j+1, hi); // Sort right part a[j+1 .. hi].
+        sort(a, lo, j - 1); // Sort left part a[lo .. j-1].
+        sort(a, j + 1, hi); // Sort right part a[j+1 .. hi].
     }
 
 }

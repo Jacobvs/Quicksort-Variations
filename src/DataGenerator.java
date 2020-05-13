@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class DataGenerator {
 
-    public static Double[] generateNDoubles(int n){
+    public static Double[] generateNDoubles(int n) {
         Double[] arr = new Double[n];
         for (int i = 0; i < n; i++)
             arr[i] = StdRandom.uniform();
@@ -29,13 +29,15 @@ public class DataGenerator {
         return res;
     }
 
-    public static Integer[] generateNIntegers(int n){
-        Integer[] ints = new Integer[n*14];
-
-        for (int i = 2; i < 17; i++)
-            for (int j = 0; j < n; j++)
-                ints[n] = StdRandom.uniform(0, n/i);
-
+    public static Integer[] generateNIntegers(int n) {
+        Integer[] ints = new Integer[n * 15];
+        int count = 0;
+        for (int i = 2; i < 17; i++) {
+            for (int j = 0; j < n; j++) {
+                ints[count] = StdRandom.uniform(0, n / i);
+                count++;
+            }
+        }
         return ints;
     }
 

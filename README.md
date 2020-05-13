@@ -1,12 +1,13 @@
-# Quicksort-Variations
+# Quicksort-Variations #
 WPI Algorithms (CS 2223) Final Project - Analysis of different quicksort algorithms
 
-# How to run the project:
-- Clone the project to your computer
-- Run Main
+# How to run the project #
+* Clone the project to your computer
+* Add the 'stdlib.jar' file as a dependency
+* Run QuicksortVariations.main()
 
 -----
-# Description
+# Description #
 This project creates numerous datasets and performs analysis of various quicksort algorithm implementations
 Algorithms (from Sedgewick book):
 - Cutoff to Insertion Sort (p. 296)

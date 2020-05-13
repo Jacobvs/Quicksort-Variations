@@ -1,16 +1,16 @@
-public class ThreeWayPartitioning extends QuickSort{
+public class ThreeWayPartitioning extends QuickSort {
 
     public static void sort(Comparable[] a) {
+        resetCounts();
         StdRandom.shuffle(a); // Eliminate dependence on input.
         sort(a, 0, a.length - 1);
     }
 
     private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo) return;
-        int lt = lo, i = lo+1, gt = hi;
+        int lt = lo, i = lo + 1, gt = hi;
         Comparable v = a[lo];
-        while (i <= gt)
-        {
+        while (i <= gt) {
             if (less(a[i], v))
                 exch(a, lt++, i++);
             else if (less(v, a[i]))

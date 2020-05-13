@@ -1,4 +1,5 @@
 import jdk.nashorn.internal.objects.annotations.Getter;
+import jdk.nashorn.internal.objects.annotations.Setter;
 
 abstract class Sort {
 
@@ -12,30 +13,36 @@ abstract class Sort {
 
     static void exch(Comparable[] a, int i, int j) {
         numExchanges++;
-        Comparable t = a[i]; a[i] = a[j]; a[j] = t;
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
     }
 
     @Getter
-    static int getNumExchanges(){
+    static int getNumExchanges() {
         return numExchanges;
     }
 
     @Getter
-    static int getNumCompares(){
+    static int getNumCompares() {
         return numCompares;
     }
 
-    public static void show(Comparable[] a)
-    { // Print the array, on a single line.
+    @Setter
+    static void resetCounts() {
+        numExchanges = 0;
+        numCompares = 0;
+    }
+
+    public static void show(Comparable[] a) { // Print the array, on a single line.
         for (int i = 0; i < a.length; i++)
             StdOut.print(a[i] + " ");
         StdOut.println();
     }
 
-    public static boolean isSorted(Comparable[] a)
-    { // Test whether the array entries are in order.
+    public static boolean isSorted(Comparable[] a) { // Test whether the array entries are in order.
         for (int i = 1; i < a.length; i++)
-            if (less(a[i], a[i-1])) return false;
+            if (less(a[i], a[i - 1])) return false;
         return true;
     }
 
