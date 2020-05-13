@@ -3,7 +3,7 @@ WPI Algorithms (CS 2223) Final Project - Analysis of different quicksort algorit
 
 # How to run the project #
 * Clone the project to your computer
-* Add the 'stdlib.jar' file as a dependency
+* Add the 'stdlib.jar' file as a library
 * Run QuicksortVariations.main()
 
 -----
