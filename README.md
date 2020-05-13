@@ -8,8 +8,14 @@ WPI Algorithms (CS 2223) Final Project - Analysis of different quicksort algorit
 * Run QuicksortVariations.main()
 * Note: This will take a long time! (~30 Minutes on a slow computer)
 
+# Report
+[Read our Report here!](Report.docx)  
+Or by downloading the `Report.docx` file.
+
 # Presentation
-https://youtu.be/9lMkeN_o7LU
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=9lMkeN_o7LU
+" target="_blank"><img src="http://img.youtube.com/vi/9lMkeN_o7LU/0.jpg" 
+alt="Presentation" width="240" height="180" border="10" /></a>
 
 # Explore our Data!
 https://docs.google.com/spreadsheets/d/1a_cVJwWMOKsLbLEcUgur9qgg4Iwui_vL9-Apm9ZpurY/edit?usp=sharing
