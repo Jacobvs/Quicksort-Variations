@@ -12,11 +12,12 @@ public class QuicksortVariations {
         // Third dimension is N size where: 0 = 2^14, 1 = 2^15, 2 = 2^16, 3 = 2^17, 4 = 2^18
         // Fourth dimension is the data where: 0 = min, 1 = avg, 2 = max
 
-        Double[][][][] timeData, exchData, compsData;
-        timeData = exchData = compsData = new Double[3][3][5][3];
+        Double[][][][] timeData = new Double[3][3][5][3];
+        Double[][][][] exchData = new Double[3][3][5][3];
+        Double[][][][] compsData = new Double[3][3][5][3];
 
         // Toggle spammy output
-        boolean printRich = true;
+        boolean printRich = false;
         boolean exportCsv = true;
 
         for (int p = 14, c = 0; p <= 18; p++, c++) {
@@ -238,7 +239,7 @@ public class QuicksortVariations {
             str = str + dataExporter(compsData);
 
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream("output.csv"), StandardCharsets.UTF_8))) {
+                    new FileOutputStream("output.txt"), StandardCharsets.UTF_8))) {
                 writer.write(str);
             }
             catch (IOException e){

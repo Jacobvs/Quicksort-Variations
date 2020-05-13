@@ -1,6 +1,7 @@
 public class QuickSort extends Sort {
 
     public static void sort(Comparable[] a) {
+        resetCounts();
         StdRandom.shuffle(a); // Eliminate dependence on input.
         sort(a, 0, a.length - 1);
     }
