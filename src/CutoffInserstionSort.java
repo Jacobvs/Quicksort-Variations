@@ -8,7 +8,7 @@ public class CutoffInserstionSort extends QuickSort {
 
 
     private static void sort(Comparable[] a, int lo, int hi) {
-        if (hi <= lo + 12) {
+        if (hi <= lo + 12) { // Cutoff set at 12 somewhat arbitrarily
             Insertion.sort(a, lo, hi);
             return;
         }

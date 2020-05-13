@@ -17,13 +17,16 @@ public class QuicksortVariations {
         Double[][][][] compsData = new Double[3][3][5][3];
 
         // Toggle spammy output
-        boolean printRich = false;
-        boolean exportCsv = true;
+        boolean printRich = true;
+        boolean exportTxt = true;
+
+        // Set number of trials
+        int T = 100;
 
         for (int p = 14, c = 0; p <= 18; p++, c++) {
 
-            int N = (int) Math.pow(2, p); // 2^14
-            int T = 100;
+            int N = (int) Math.pow(2, p); // 2^p
+
 
             if(printRich) {
                 System.out.println("===========================");
@@ -32,15 +35,18 @@ public class QuicksortVariations {
                 System.out.println();
             }
 
+            // Generate data
             Double[] doubleData = DataGenerator.generateNDoubles(N);
             String[] stringData = DataGenerator.generateNStrings(N);
             Integer[] integerData = DataGenerator.generateNIntegers(N);
+
+            //Copy data to sort
             Double[] doubles = doubleData;
             String[] strings = stringData;
             Integer[] ints = integerData;
 
 
-            //Test Cutoff to Insertion QuickSort
+            //Test Cutoff to Insertion QuickSort for T trials
             Stopwatch sw = new Stopwatch();
             TestingData insertionDoubles = new TestingData();
             TestingData insertionStrings = new TestingData();
@@ -67,7 +73,8 @@ public class QuicksortVariations {
                 ints = integerData;
                 lastTime = sw.elapsedTime();
             }
-            
+
+            // Save data in arrays
             timeData[0][0][c] = new Double[]{insertionDoubles.getMinTime(), insertionDoubles.getAvgTime(), insertionDoubles.getMaxTime()};
             exchData[0][0][c] = new Double[]{(double) insertionDoubles.getMinExch(), insertionDoubles.getAvgExch(), (double) insertionDoubles.getMaxExch()};
             compsData[0][0][c] = new Double[]{(double) insertionDoubles.getMinComps(), insertionDoubles.getAvgComps(), (double) insertionDoubles.getMaxComps()};
@@ -232,7 +239,7 @@ public class QuicksortVariations {
             }
         }
 
-        if(exportCsv) {
+        if(exportTxt) {
             String str = "Time Data:\n";
             str = str + dataExporter(timeData);
             str = str + "Exchange Data:\n";

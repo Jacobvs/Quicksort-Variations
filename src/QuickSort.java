@@ -1,11 +1,21 @@
 public class QuickSort extends Sort {
 
+    /**
+     * Base quicksort implementation
+     * @param a Comparable[] of values
+     */
     public static void sort(Comparable[] a) {
         resetCounts();
         StdRandom.shuffle(a); // Eliminate dependence on input.
         sort(a, 0, a.length - 1);
     }
 
+    /**
+     * Helper method to recurse upon
+     * @param a Comparable[] of values
+     * @param lo lower bound
+     * @param hi upper bound
+     */
     private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo)
             return;
@@ -14,6 +24,12 @@ public class QuickSort extends Sort {
         sort(a, j + 1, hi); // Sort right part a[j+1 .. hi].
     }
 
+    /**
+     * Sorts sub-arrays
+     * @param a Comparable[] of values
+     * @param lo lower bound
+     * @param hi upper bound
+     */
     static int partition(Comparable[] a, int lo, int hi) {
         // Partition into a[lo..i-1], a[i], a[i+1..hi].
         return partition(a, a[lo], lo, hi);

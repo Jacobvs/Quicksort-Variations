@@ -9,12 +9,21 @@ public class TestingData {
     private ArrayList<Double> times;
     private ArrayList<Integer> exchanges, compares;
 
+    /**
+     * Stores data from trials for easy access
+     */
     public TestingData() {
         this.times = new ArrayList<>();
         this.exchanges = new ArrayList<>();
         this.compares = new ArrayList<>();
     }
 
+    /**
+     *
+     * @param time double of execution time
+     * @param exchanges int of exchanges made while sorting
+     * @param compares int of compares made while sorting
+     */
     @Setter
     public void addAll(double time, int exchanges, int compares) {
         this.times.add(time);
@@ -32,8 +41,10 @@ public class TestingData {
         return Collections.min(times);
     }
 
+
     @Getter
     public double getAvgTime() {
+        // Use java streams to simplify this
         return times.stream().mapToDouble(Double::doubleValue).average().getAsDouble();
     }
 

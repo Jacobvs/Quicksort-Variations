@@ -3,8 +3,10 @@ import jdk.nashorn.internal.objects.annotations.Setter;
 
 abstract class Sort {
 
+    // Store counts for later retrieval
     private static int numExchanges = 0;
     private static int numCompares = 0;
+
 
     static boolean less(Comparable v, Comparable w) {
         numCompares++;

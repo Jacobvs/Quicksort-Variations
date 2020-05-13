@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 public class DataGenerator {
 
+    /**
+     * Generate N uniformly random doubles
+     * @param n number of elements to generate
+     * @return Double[]
+     */
     public static Double[] generateNDoubles(int n) {
         Double[] arr = new Double[n];
         for (int i = 0; i < n; i++)
@@ -12,6 +17,11 @@ public class DataGenerator {
         return arr;
     }
 
+    /**
+     * Generate N random strings from a dictionary
+     * @param n number of elements to generate
+     * @return String[]
+     */
     public static String[] generateNStrings(int n) throws FileNotFoundException {
         ArrayList<String> strings = new ArrayList<>();
         String[] res = new String[n];
@@ -29,6 +39,11 @@ public class DataGenerator {
         return res;
     }
 
+    /**
+     * Generate N uniformly random Integers for k = 2 -> 16
+     * @param n number of elements to generate
+     * @return Integer[]
+     */
     public static Integer[] generateNIntegers(int n) {
         Integer[] ints = new Integer[n * 15];
         int count = 0;
