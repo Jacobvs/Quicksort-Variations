@@ -233,9 +233,11 @@ public class QuicksortVariations {
         }
 
         if(exportCsv) {
-            String str = "";
+            String str = "Time Data:\n";
             str = str + dataExporter(timeData);
+            str = str + "Exchange Data:\n";
             str = str + dataExporter(exchData);
+            str = str + "Comparisons Data:\n";
             str = str + dataExporter(compsData);
 
             try (Writer writer = new BufferedWriter(new OutputStreamWriter(
@@ -254,7 +256,7 @@ public class QuicksortVariations {
         for(Double[][][] a : data){ // print type of sort
             for(Double[][] b : a){ // Print doubles/strings/ints
                 for(Double[] v : b){ // Print n's
-                    str.append(v[0]).append(", ").append(v[1]).append(", ").append(v[2]);
+                    str.append(v[0]).append(", ").append(v[1]).append(", ").append(v[2]).append("\n");
                 }
             }
         }
