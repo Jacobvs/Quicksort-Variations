@@ -1,10 +1,18 @@
-# Quicksort-Variations #
+# Quicksort-Variations
 WPI Algorithms (CS 2223) Final Project - Analysis of different quicksort algorithms
 
-# How to run the project #
+# How to run the project
 * Clone the project to your computer
 * Add the 'stdlib.jar' file as a library
+* Alter parameters such as T (for trials), and change output options
 * Run QuicksortVariations.main()
+* Note: This will take a long time! (~30 Minutes on a slow computer)
+
+# Presentation
+https://youtu.be/9lMkeN_o7LU
+
+# Explore our Data!
+https://docs.google.com/spreadsheets/d/1a_cVJwWMOKsLbLEcUgur9qgg4Iwui_vL9-Apm9ZpurY/edit?usp=sharing
 
 -----
 # Description #
