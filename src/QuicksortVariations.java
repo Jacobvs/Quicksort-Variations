@@ -1,4 +1,5 @@
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class QuicksortVariations {
 
@@ -8,14 +9,15 @@ public class QuicksortVariations {
         // Store all collected data in array for easy excel output
         // First dimension is test type where: 0 = Cutoff to Insertion Sort, 1 = Three Way Partitioning, 2 = Median Of Three
         // Second dimension is dataset type where: 0 = Doubles, 1 = Strings, 2 = Ints
-        // Third dimension is Data type where: 0 = time, 1 = exchanges, 2 = comparisons
-        // Fourth dimension is N size where: 0 = 2^14, 1 = 2^15, 2 = 2^16, 3 = 2^17, 4 = 2^18
-        // Fith dimension is the data where: 0 = min, 1 = avg, 2 = max
+        // Third dimension is N size where: 0 = 2^14, 1 = 2^15, 2 = 2^16, 3 = 2^17, 4 = 2^18
+        // Fourth dimension is the data where: 0 = min, 1 = avg, 2 = max
 
-        Double[][][][][] timeData, exchData, compsData;
-        timeData = exchData = compsData = new Double[3][3][3][5][3];
+        Double[][][][] timeData, exchData, compsData;
+        timeData = exchData = compsData = new Double[3][3][5][3];
 
-        boolean printRich = false;
+        // Toggle spammy output
+        boolean printRich = true;
+        boolean exportCsv = true;
 
         for (int p = 14, c = 0; p <= 18; p++, c++) {
 
@@ -65,15 +67,15 @@ public class QuicksortVariations {
                 lastTime = sw.elapsedTime();
             }
             
-            timeData[0][0][0][c] = new Double[]{insertionDoubles.getMinTime(), insertionDoubles.getAvgTime(), insertionDoubles.getMaxTime()};
-            exchData[0][0][1][c] = new Double[]{(double) insertionDoubles.getMinExch(), insertionDoubles.getAvgExch(), (double) insertionDoubles.getMaxExch()};
-            compsData[0][0][2][c] = new Double[]{(double) insertionDoubles.getMinComps(), insertionDoubles.getAvgComps(), (double) insertionDoubles.getMaxComps()};
-            timeData[0][1][0][c] = new Double[]{insertionStrings.getMinTime(), insertionStrings.getAvgTime(), insertionStrings.getMaxTime()};
-            exchData[0][1][1][c] = new Double[]{(double) insertionStrings.getMinExch(), insertionStrings.getAvgExch(), (double) insertionStrings.getMaxExch()};
-            compsData[0][1][2][c] = new Double[]{(double) insertionStrings.getMinComps(), insertionStrings.getAvgComps(), (double) insertionStrings.getMaxComps()};
-            timeData[0][2][0][c] = new Double[]{insertionInts.getMinTime(), insertionInts.getAvgTime(), insertionInts.getMaxTime()};
-            exchData[0][2][1][c] = new Double[]{(double) insertionInts.getMinExch(), insertionInts.getAvgExch(), (double) insertionInts.getMaxExch()};
-            compsData[0][2][2][c] = new Double[]{(double) insertionInts.getMinComps(), insertionInts.getAvgComps(), (double) insertionInts.getMaxComps()};
+            timeData[0][0][c] = new Double[]{insertionDoubles.getMinTime(), insertionDoubles.getAvgTime(), insertionDoubles.getMaxTime()};
+            exchData[0][0][c] = new Double[]{(double) insertionDoubles.getMinExch(), insertionDoubles.getAvgExch(), (double) insertionDoubles.getMaxExch()};
+            compsData[0][0][c] = new Double[]{(double) insertionDoubles.getMinComps(), insertionDoubles.getAvgComps(), (double) insertionDoubles.getMaxComps()};
+            timeData[0][1][c] = new Double[]{insertionStrings.getMinTime(), insertionStrings.getAvgTime(), insertionStrings.getMaxTime()};
+            exchData[0][1][c] = new Double[]{(double) insertionStrings.getMinExch(), insertionStrings.getAvgExch(), (double) insertionStrings.getMaxExch()};
+            compsData[0][1][c] = new Double[]{(double) insertionStrings.getMinComps(), insertionStrings.getAvgComps(), (double) insertionStrings.getMaxComps()};
+            timeData[0][2][c] = new Double[]{insertionInts.getMinTime(), insertionInts.getAvgTime(), insertionInts.getMaxTime()};
+            exchData[0][2][c] = new Double[]{(double) insertionInts.getMinExch(), insertionInts.getAvgExch(), (double) insertionInts.getMaxExch()};
+            compsData[0][2][c] = new Double[]{(double) insertionInts.getMinComps(), insertionInts.getAvgComps(), (double) insertionInts.getMaxComps()};
 
 
             //
@@ -105,15 +107,15 @@ public class QuicksortVariations {
                 lastTime = sw.elapsedTime();
             }
 
-            timeData[1][0][0][c] = new Double[]{threeWayDoubles.getMinTime(), threeWayDoubles.getAvgTime(), threeWayDoubles.getMaxTime()};
-            exchData[1][0][1][c] = new Double[]{(double) threeWayDoubles.getMinExch(), threeWayDoubles.getAvgExch(), (double) threeWayDoubles.getMaxExch()};
-            compsData[1][0][2][c] = new Double[]{(double) threeWayDoubles.getMinComps(), threeWayDoubles.getAvgComps(), (double) threeWayDoubles.getMaxComps()};
-            timeData[1][1][0][c] = new Double[]{threeWayStrings.getMinTime(), threeWayStrings.getAvgTime(), threeWayStrings.getMaxTime()};
-            exchData[1][1][1][c] = new Double[]{(double) threeWayStrings.getMinExch(), threeWayStrings.getAvgExch(), (double) threeWayStrings.getMaxExch()};
-            compsData[1][1][2][c] = new Double[]{(double) threeWayStrings.getMinComps(), threeWayStrings.getAvgComps(), (double) threeWayStrings.getMaxComps()};
-            timeData[1][2][0][c] = new Double[]{threeWayInts.getMinTime(), threeWayInts.getAvgTime(), threeWayInts.getMaxTime()};
-            exchData[1][2][1][c] = new Double[]{(double) threeWayInts.getMinExch(), threeWayInts.getAvgExch(), (double) threeWayInts.getMaxExch()};
-            compsData[1][2][2][c] = new Double[]{(double) threeWayInts.getMinComps(), threeWayInts.getAvgComps(), (double) threeWayInts.getMaxComps()};
+            timeData[1][0][c] = new Double[]{threeWayDoubles.getMinTime(), threeWayDoubles.getAvgTime(), threeWayDoubles.getMaxTime()};
+            exchData[1][0][c] = new Double[]{(double) threeWayDoubles.getMinExch(), threeWayDoubles.getAvgExch(), (double) threeWayDoubles.getMaxExch()};
+            compsData[1][0][c] = new Double[]{(double) threeWayDoubles.getMinComps(), threeWayDoubles.getAvgComps(), (double) threeWayDoubles.getMaxComps()};
+            timeData[1][1][c] = new Double[]{threeWayStrings.getMinTime(), threeWayStrings.getAvgTime(), threeWayStrings.getMaxTime()};
+            exchData[1][1][c] = new Double[]{(double) threeWayStrings.getMinExch(), threeWayStrings.getAvgExch(), (double) threeWayStrings.getMaxExch()};
+            compsData[1][1][c] = new Double[]{(double) threeWayStrings.getMinComps(), threeWayStrings.getAvgComps(), (double) threeWayStrings.getMaxComps()};
+            timeData[1][2][c] = new Double[]{threeWayInts.getMinTime(), threeWayInts.getAvgTime(), threeWayInts.getMaxTime()};
+            exchData[1][2][c] = new Double[]{(double) threeWayInts.getMinExch(), threeWayInts.getAvgExch(), (double) threeWayInts.getMaxExch()};
+            compsData[1][2][c] = new Double[]{(double) threeWayInts.getMinComps(), threeWayInts.getAvgComps(), (double) threeWayInts.getMaxComps()};
 
 
 
@@ -146,15 +148,15 @@ public class QuicksortVariations {
                 lastTime = sw.elapsedTime();
             }
 
-            timeData[2][0][0][c] = new Double[]{medianThreeDoubles.getMinTime(), medianThreeDoubles.getAvgTime(), medianThreeDoubles.getMaxTime()};
-            exchData[2][0][1][c] = new Double[]{(double) medianThreeDoubles.getMinExch(), medianThreeDoubles.getAvgExch(), (double) medianThreeDoubles.getMaxExch()};
-            compsData[2][0][2][c] = new Double[]{(double) medianThreeDoubles.getMinComps(), medianThreeDoubles.getAvgComps(), (double) medianThreeDoubles.getMaxComps()};
-            timeData[2][1][0][c] = new Double[]{medianThreeStrings.getMinTime(), medianThreeStrings.getAvgTime(), medianThreeStrings.getMaxTime()};
-            exchData[2][1][1][c] = new Double[]{(double) medianThreeStrings.getMinExch(), medianThreeStrings.getAvgExch(), (double) medianThreeStrings.getMaxExch()};
-            compsData[2][1][2][c] = new Double[]{(double) medianThreeStrings.getMinComps(), medianThreeStrings.getAvgComps(), (double) medianThreeStrings.getMaxComps()};
-            timeData[2][2][0][c] = new Double[]{medianThreeInts.getMinTime(), medianThreeInts.getAvgTime(), medianThreeInts.getMaxTime()};
-            exchData[2][2][1][c] = new Double[]{(double) medianThreeInts.getMinExch(), medianThreeInts.getAvgExch(), (double) medianThreeInts.getMaxExch()};
-            compsData[2][2][2][c] = new Double[]{(double) medianThreeInts.getMinComps(), medianThreeInts.getAvgComps(), (double) medianThreeInts.getMaxComps()};
+            timeData[2][0][c] = new Double[]{medianThreeDoubles.getMinTime(), medianThreeDoubles.getAvgTime(), medianThreeDoubles.getMaxTime()};
+            exchData[2][0][c] = new Double[]{(double) medianThreeDoubles.getMinExch(), medianThreeDoubles.getAvgExch(), (double) medianThreeDoubles.getMaxExch()};
+            compsData[2][0][c] = new Double[]{(double) medianThreeDoubles.getMinComps(), medianThreeDoubles.getAvgComps(), (double) medianThreeDoubles.getMaxComps()};
+            timeData[2][1][c] = new Double[]{medianThreeStrings.getMinTime(), medianThreeStrings.getAvgTime(), medianThreeStrings.getMaxTime()};
+            exchData[2][1][c] = new Double[]{(double) medianThreeStrings.getMinExch(), medianThreeStrings.getAvgExch(), (double) medianThreeStrings.getMaxExch()};
+            compsData[2][1][c] = new Double[]{(double) medianThreeStrings.getMinComps(), medianThreeStrings.getAvgComps(), (double) medianThreeStrings.getMaxComps()};
+            timeData[2][2][c] = new Double[]{medianThreeInts.getMinTime(), medianThreeInts.getAvgTime(), medianThreeInts.getMaxTime()};
+            exchData[2][2][c] = new Double[]{(double) medianThreeInts.getMinExch(), medianThreeInts.getAvgExch(), (double) medianThreeInts.getMaxExch()};
+            compsData[2][2][c] = new Double[]{(double) medianThreeInts.getMinComps(), medianThreeInts.getAvgComps(), (double) medianThreeInts.getMaxComps()};
 
             if(printRich){
                 System.out.println("Cutoff to Insertion QuickSort Testing data for " + T + " trials:");
@@ -229,22 +231,34 @@ public class QuicksortVariations {
             }
         }
 
-        printHelper(timeData);
-        printHelper(exchData);
-        printHelper(compsData);
+        if(exportCsv) {
+            String str = "";
+            str = str + dataExporter(timeData);
+            str = str + dataExporter(exchData);
+            str = str + dataExporter(compsData);
+
+            try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream("output.csv"), StandardCharsets.UTF_8))) {
+                writer.write(str);
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 
-    private static void printHelper(Double[][][][][] data){
-        for(Double[][][][] a : data){
-            for(Double[][][] b : a){
-                for(Double[][] c : b){
-                    for(Double[] d : c){
-                        System.out.println(d[0] + ", " + d[1] + ", " + d[2]);
-                    }
+    // Prints data in CSV format for import to excel
+    private static String dataExporter(Double[][][][] data){
+        StringBuilder str = new StringBuilder();
+        for(Double[][][] a : data){ // print type of sort
+            for(Double[][] b : a){ // Print doubles/strings/ints
+                for(Double[] v : b){ // Print n's
+                    str.append(v[0]).append(", ").append(v[1]).append(", ").append(v[2]);
                 }
             }
         }
-        System.out.println("-----");
+        str.append("\n-----\n");
+        return str.toString();
     }
 
 }
