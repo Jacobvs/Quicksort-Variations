@@ -6,7 +6,6 @@ public class QuicksortVariations {
     public static void main(String[] args) throws FileNotFoundException {
 
         // Store all collected data in array for easy excel output
-
         // First dimension is test type where: 0 = Cutoff to Insertion Sort, 1 = Three Way Partitioning, 2 = Median Of Three
         // Second dimension is dataset type where: 0 = Doubles, 1 = Strings, 2 = Ints
         // Third dimension is Data type where: 0 = time, 1 = exchanges, 2 = comparisons
@@ -245,6 +244,7 @@ public class QuicksortVariations {
                 }
             }
         }
+        System.out.println("-----");
     }
 
 }
